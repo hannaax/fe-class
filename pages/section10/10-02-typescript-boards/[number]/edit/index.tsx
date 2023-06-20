@@ -1,4 +1,4 @@
-import BoardWrite from "../../../../src/components/units/board/09-write2/BoardWrite.container"
+import BoardWrite from "../../../../../src/components/units/board/10-write/BoardWrite.container"
 import { useQuery, gql } from "@apollo/client"
 import { useRouter } from "next/router"
 

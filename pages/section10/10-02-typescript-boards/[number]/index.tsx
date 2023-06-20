@@ -20,7 +20,9 @@ export default function StaticRoutingMovedPage() {
   })
 
   const onClickMove = () => {
-    router.push(`/section09/09-03-boards/${router.query.number}/edit`)
+    router.push(
+      `/section10/10-02-typescript-boards/${router.query.number}/edit`
+    )
   }
 
   return (

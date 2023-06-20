@@ -1,4 +1,4 @@
-import BoardWrite from "../../../../src/components/units/board/09-write2/BoardWrite.container"
+import BoardWrite from "../../../../src/components/units/board/10-write/BoardWrite.container"
 
 export default function GraphqlMutationPage() {
   // 한줄일때 괄호() 필요 없음

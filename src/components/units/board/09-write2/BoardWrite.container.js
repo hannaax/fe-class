@@ -30,10 +30,15 @@ export default function BoardWrite(props) {
       },
     }) // axios.get()과 역할 동일
     console.log(result)
-    router.push(`/section09/09-03-boards/${result.data.createBoard.number}`)
+    router.push(`/section09/09-04-boards/${result.data.createBoard.number}`)
   }
 
   const onClickUpdate = async () => {
+    const myvariables = { number: Number(router.query.number) }
+    if (title) myvariables.title = title
+    if (writer) myvariables.writer = writer
+    if (contents) myvariables.contents = contents
+
     const result = await updateBoard({
       variables: {
         number: Number(router.query.number),
@@ -43,7 +48,7 @@ export default function BoardWrite(props) {
       },
     })
     console.log(result)
-    router.push(`/section09/09-03-boards/${result.data.updateBoard.number}`)
+    router.push(`/section09/09-04-boards/${result.data.updateBoard.number}`)
   }
 
   const onChangeWriter = (event) => {
@@ -66,6 +71,7 @@ export default function BoardWrite(props) {
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}
       isEdit={props.isEdit}
+      data={props.data} // undefined 이거나, data
     />
   )
 }
