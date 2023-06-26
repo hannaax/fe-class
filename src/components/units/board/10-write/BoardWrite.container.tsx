@@ -1,17 +1,18 @@
 import { useMutation } from "@apollo/client"
-import { useState, ChangeEvent } from "react"
+import { useState } from "react"
+import type { ChangeEvent } from "react"
 import { 나의그래프큐엘셋팅, UPDATE_BOARD } from "./BoardWrite.queries" // export는 골라서 가져오기 가능
 import BoardWriteUI from "./BoardWrite.presenter" // export default로 한개만 가져오기
 // import Adfdfdf from "./BoardWrite.presenter" // export default로 이름 바꿔서 가져오기
 // import Adfdfdf, { adpple } from "./BoardWrite.presenter" // export default와 export 함께 가져오기
 import { useRouter } from "next/router"
-import { IBoardWriteProps, IMyvariables } from "./BoardWrite.types"
+import type { IBoardWriteProps, IMyvariables } from "./BoardWrite.types"
 
 // import * as S from "./BoardWrite.styles" // export 한방에 다 가져오기
 // S.BlueButton // export 한방에 다 가져오기
 // S.RedInput // export 한방에 다 가져오기
 
-export default function BoardWrite(props: IBoardWriteProps) {
+export default function BoardWrite(props: IBoardWriteProps): JSX.Element {
   const router = useRouter()
 
   const [writer, setWriter] = useState("")
@@ -25,9 +26,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const result = await 나의함수({
       variables: {
         // variables가 $ 역할
-        writer: writer,
-        title: title,
-        contents: contents,
+        writer,
+        title,
+        contents,
       },
     }) // axios.get()과 역할 동일
     console.log(result)
@@ -45,9 +46,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const result = await updateBoard({
       variables: {
         number: Number(router.query.number),
-        writer: writer,
-        title: title,
-        contents: contents,
+        writer,
+        title,
+        contents,
       },
     })
     console.log(result)
@@ -56,15 +57,15 @@ export default function BoardWrite(props: IBoardWriteProps) {
     )
   }
 
-  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>): void => {
     setWriter(event.target.value)
   }
 
-  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.target.value)
   }
 
-  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeContents = (event: ChangeEvent<HTMLInputElement>): void => {
     setContents(event.target.value)
   }
 

@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client"
 import { useRouter } from "next/router"
-import {
+import type {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../src/commons/types/generated/types"
@@ -16,7 +16,7 @@ const FETCH_BOARD = gql`
   }
 `
 
-export default function StaticRoutingMovedPage() {
+export default function StaticRoutingMovedPage(): JSX.Element {
   const Router = useRouter()
 
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(

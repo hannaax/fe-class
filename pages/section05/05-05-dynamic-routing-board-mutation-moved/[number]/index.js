@@ -19,11 +19,12 @@ export default function StaticRoutingMovedPage() {
     variables: { number: Number(Router.query.number) },
   })
 
-  return
-  ;<div>
-    <div>{Router.query.number}번 게시글 이동 완료</div>
-    <div>작성자: {data?.fetchBoard?.writer}</div>
-    <div>제목: {data?.fetchBoard?.title}</div>
-    <div>내용: {data?.fetchBoard?.contents}</div>
-  </div>
+  return (
+    <div>
+      <div>{Router.query.number}번 게시글 이동 완료</div>
+      <div>작성자: {data?.fetchBoard?.writer}</div>
+      <div>제목: {data?.fetchBoard?.title}</div>
+      <div>내용: {data?.fetchBoard?.contents}</div>
+    </div>
+  )
 }

@@ -1,6 +1,15 @@
 import { RedInput, BlueButton } from "./BoardWrite.styles"
+import type { MouseEvent, ChangeEvent } from "react"
 
-export default function BoardWriteUI(props) {
+interface IBoardWriteUIProps {
+  onClickSubmit: (event: MouseEvent<HTMLButtonElement>) => void
+  onClickUpdate: (event: MouseEvent<HTMLButtonElement>) => void
+  onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void
+  onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void
+  onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
+export default function BoardWriteUI(props: IBoardWriteUIProps): JSX.Element {
   return (
     <div>
       <div>@@@@@@@@@@@@ 프리젠터 @@@@@@@@@@@@@@</div>

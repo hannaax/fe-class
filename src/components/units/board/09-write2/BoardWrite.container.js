@@ -24,9 +24,9 @@ export default function BoardWrite(props) {
     const result = await 나의함수({
       variables: {
         // variables가 $ 역할
-        writer: writer,
-        title: title,
-        contents: contents,
+        writer,
+        title,
+        contents,
       },
     }) // axios.get()과 역할 동일
     console.log(result)
@@ -42,9 +42,9 @@ export default function BoardWrite(props) {
     const result = await updateBoard({
       variables: {
         number: Number(router.query.number),
-        writer: writer,
-        title: title,
-        contents: contents,
+        writer,
+        title,
+        contents,
       },
     })
     console.log(result)

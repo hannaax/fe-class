@@ -1,4 +1,3 @@
-import { useQuery } from "@apollo/client"
 import { useRouter } from "next/router"
 
 export default function StaticRoutingPage() {

@@ -20,10 +20,11 @@ export default function MapFruitsPage() {
     <div>2 샤인머스켓</div>,
     <div>3 산청딸기</div>,
   ]
+  console.log(aaa)
 
   // 2. 실무 백엔드 데이터 예제
   const bbb = FRUITS.map((el) => (
-    <div>
+    <div key={el.number}>
       {el.number} {el.title}
     </div>
   ))

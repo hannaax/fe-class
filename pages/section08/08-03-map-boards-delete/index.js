@@ -1,5 +1,4 @@
 import { useQuery, gql, useMutation } from "@apollo/client"
-import { Fragment } from "react"
 
 const FETCH_BOARDS = gql`
   query {

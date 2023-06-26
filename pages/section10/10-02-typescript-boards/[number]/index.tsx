@@ -12,14 +12,14 @@ const FETCH_BOARD = gql`
   }
 `
 
-export default function StaticRoutingMovedPage() {
+export default function StaticRoutingMovedPage(): JSX.Element {
   const router = useRouter()
 
   const { data } = useQuery(FETCH_BOARD, {
     variables: { number: Number(router.query.number) },
   })
 
-  const onClickMove = () => {
+  const onClickMove = (): void => {
     router.push(
       `/section10/10-02-typescript-boards/${router.query.number}/edit`
     )

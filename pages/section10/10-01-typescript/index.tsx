@@ -1,4 +1,4 @@
-export default function TypescriptPage() {
+export default function TypescriptPage(): JSX.Element {
   // 타입추론
   let aaa = "안녕하세요"
   aaa = 3
@@ -21,9 +21,9 @@ export default function TypescriptPage() {
   eee = "false" // true
 
   // 배열타입
-  let fff: number[] = [1, 2, 3, 4, 5, "안녕"]
-  let ggg: string[] = ["철", "영", "훈", 10]
-  let hhh: (string | number)[] = ["철", 1] // 타입을 추론해서 어떤 타입 사용하는지 알아보기
+  const fff: number[] = [1, 2, 3, 4, 5, "안녕"]
+  const ggg: string[] = ["철", "영", "훈", 10]
+  const hhh: Array<string | number> = ["철", 1] // 타입을 추론해서 어떤 타입 사용하는지 알아보기
 
   // 객체타입
   interface IProfile {
@@ -45,12 +45,12 @@ export default function TypescriptPage() {
 
   // 함수타입
   function add(num1: number, num2: number, unit: string): string {
-    return num1 + num2 + unit
+    return `${num1}${num2}${unit}`
   }
   const result = add(1000, 2000, "원") // 결과의 리턴 타입도 예측 가능
 
   const add2 = (num1: number, num2: number, unit: string): string => {
-    return num1 + num2 + unit
+    return `${num1}${num2}${unit}`
   }
   const result2 = add(1000, 2000, "원") // 결과의 리턴 타입도 예측 가능
 
@@ -58,6 +58,19 @@ export default function TypescriptPage() {
   let qqq: any = "철수" // 자바스크립트와 동일
   qqq = 123
   qqq = true
+
+  console.log(aaa)
+  console.log(bbb)
+  console.log(ccc)
+  console.log(ddd)
+  console.log(eee)
+  console.log(fff)
+  console.log(ggg)
+  console.log(hhh)
+  console.log(result)
+  console.log(add2)
+  console.log(result2)
+  console.log(qqq)
 
   return <></>
 }

@@ -1,4 +1,10 @@
-export default function BoardComponent(props) {
+interface IBoardComponentProps {
+  isEdit: boolean
+}
+
+export default function BoardComponent(
+  props: IBoardComponentProps
+): JSX.Element {
   return (
     <div>
       <h1>{props.isEdit ? "수정" : "등록"}페이지</h1>

@@ -1,5 +1,5 @@
 import { useQuery, gql } from "@apollo/client"
-import { MouseEvent } from "react"
+import type { MouseEvent } from "react"
 
 const FETCH_BOARDS = gql`
   query {
@@ -12,7 +12,7 @@ const FETCH_BOARDS = gql`
   }
 `
 
-export default function StaticRoutingMovedPage() {
+export default function StaticRoutingMovedPage(): JSX.Element {
   const { data } = useQuery(FETCH_BOARDS)
 
   console.log(data?.fetchBoards)
@@ -27,7 +27,7 @@ export default function StaticRoutingMovedPage() {
   return (
     <div>
       {data?.fetchBoards.map((el: any) => (
-        <div id={el.writer} onClick={onClickAlert}>
+        <div key={el._id} id={el.writer} onClick={onClickAlert}>
           <input type="checkbox" />
           <span style={{ margin: "10px" }}>{el.number}</span>
           <span style={{ margin: "10px" }}>{el.title}</span>

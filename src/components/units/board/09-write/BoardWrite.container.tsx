@@ -5,12 +5,13 @@ import BoardWriteUI from "./BoardWrite.presenter" // export default로 한개만
 // import Adfdfdf from "./BoardWrite.presenter" // export default로 이름 바꿔서 가져오기
 // import Adfdfdf, { adpple } from "./BoardWrite.presenter" // export default와 export 함께 가져오기
 import { useRouter } from "next/router"
+import type { ChangeEvent } from "react"
 
 // import * as S from "./BoardWrite.styles" // export 한방에 다 가져오기
 // S.BlueButton // export 한방에 다 가져오기
 // S.RedInput // export 한방에 다 가져오기
 
-export default function BoardWrite(props) {
+export default function BoardWrite(props): JSX.Element {
   const router = useRouter()
 
   const [writer, setWriter] = useState("")
@@ -24,9 +25,9 @@ export default function BoardWrite(props) {
     const result = await 나의함수({
       variables: {
         // variables가 $ 역할
-        writer: writer,
-        title: title,
-        contents: contents,
+        writer,
+        title,
+        contents,
       },
     }) // axios.get()과 역할 동일
     console.log(result)
@@ -37,24 +38,24 @@ export default function BoardWrite(props) {
     const result = await updateBoard({
       variables: {
         number: Number(router.query.number),
-        writer: writer,
-        title: title,
-        contents: contents,
+        writer,
+        title,
+        contents,
       },
     })
     console.log(result)
     router.push(`/section09/09-03-boards/${result.data.updateBoard.number}`)
   }
 
-  const onChangeWriter = (event) => {
+  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>): void => {
     setWriter(event.target.value)
   }
 
-  const onChangeTitle = (event) => {
+  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.target.value)
   }
 
-  const onChangeContents = (event) => {
+  const onChangeContents = (event: ChangeEvent<HTMLInputElement>): void => {
     setContents(event.target.value)
   }
 
