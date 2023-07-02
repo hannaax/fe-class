@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 
 export default function FunctionalCounterPage() {
@@ -21,6 +21,22 @@ export default function FunctionalCounterPage() {
       console.log("사라지기 전에 실행")
     }
   }, [])
+
+  // 1. useEffect 하나로 합치기
+  useEffect(() => {
+    console.log("그려지고 나서 실행")
+
+    return () => {
+      console.log("사라지기 전에 실행")
+    }
+  })
+
+  // 2. useEffect 잘못된 사용법(1. 추가렌더링, 무한루프)
+  // useEffect(() => {
+  //   setCount((prev) => prev + 1)
+  // }, [count])
+
+  // 이미 다 그려졌는데 바뀐 스테이트로 추가 렌더링 발생!!
 
   const onClickCountUp = (): void => {
     console.log(count)

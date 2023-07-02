@@ -6,6 +6,7 @@ import type {
 } from "../../../src/commons/types/generated/types"
 import type { MouseEvent } from "react"
 import { useState } from "react"
+import 
 
 const FETCH_BOARDS = gql`
   query fetchBoards($page: Int) {
@@ -60,15 +61,7 @@ export default function StaticRoutingMovedPage(): JSX.Element {
 
   return (
     <div>
-      {data?.fetchBoards?.map((el) => (
-        <div key={el._id}>
-          <span style={{ margin: "10px" }}>
-            {el.title}
-            {"aa"}
-          </span>
-          <span style={{ margin: "10px" }}>{el.writer}</span>
-        </div>
-      ))}
+      
       <span onClick={onClickPrevPage}>이전페이지</span>
       {new Array(10).fill(1).map(
         (_, index) =>

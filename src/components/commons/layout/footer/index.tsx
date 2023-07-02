@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 
 const Wrapper = styled.div`
   height: 50px;
-  background-color: lightgray;
+  background-color: #eee;
 `
 
 export default function LayoutFooter(): JSX.Element {
