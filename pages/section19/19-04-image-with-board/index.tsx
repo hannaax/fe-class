@@ -7,6 +7,14 @@ import type {
 } from "../../../src/commons/types/generated/types"
 import { checkValidation } from "../../../src/commons/libraries/validationFile"
 
+const 나의그래프큐엘셋팅 = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+    }
+  }
+`
+
 const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {
     uploadFile(file: $file) {
@@ -39,8 +47,48 @@ export default function ImageUploadPage(): JSX.Element {
   const onClickImage = (): void => {
     fileRef.current?.click()
   }
+
+  // /////////////////////////////////////////////////////
+
+  const [writer, setWriter] = useState("")
+  const [title, setTitle] = useState("")
+  const [contents, setContents] = useState("")
+
+  const [나의함수] = useMutation(나의그래프큐엘셋팅)
+
+  const onClickSubmit = async (): Promise<void> => {
+    const result = await 나의함수({
+      variables: {
+        // variables가 $ 역할
+        createBoardInput: {
+          writer,
+          password: "1234",
+          title,
+          contents,
+          images: [imageUrl],
+        },
+      },
+    })
+    console.log(result)
+  }
+
+  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>): void => {
+    setWriter(event.currentTarget.value)
+  }
+
+  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>): void => {
+    setTitle(event.currentTarget.value)
+  }
+
+  const onChangeContents = (event: ChangeEvent<HTMLInputElement>): void => {
+    setContents(event.currentTarget.value)
+  }
+
   return (
     <>
+      작성자: <input type="text" onChange={onChangeWriter} />
+      제목: <input type="text" onChange={onChangeTitle} />
+      내용: <input type="text" onChange={onChangeContents} />
       <div
         style={{
           width: "100px",
@@ -59,6 +107,7 @@ export default function ImageUploadPage(): JSX.Element {
         accept="image/jpeg,image/png"
       />
       <img src={`https://storage.googleapis.com/${imageUrl}`} />
+      <button onClick={onClickSubmit}>GRAPHQL-API 요청</button>
     </>
   )
 }
